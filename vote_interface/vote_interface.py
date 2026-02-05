@@ -142,11 +142,10 @@ class VotePage(tk.Frame):
             buttons_list[i].place(
                 relx=cols_relx[col], rely=rows_rely[row], anchor="center"
             )
-            button_StartPage = ttk.Button(
-                self, text="Menu", command=lambda: controller.show_frame(StartPage)
-            )
 
-        # putting the button in its place by
+        button_StartPage = ttk.Button(
+            self, text="Menu", command=lambda: controller.show_frame(StartPage)
+        )
         button_StartPage.grid()
 
 
@@ -159,6 +158,10 @@ class ResultPage(tk.Frame):
 
         bg_label = tk.Label(self, image=self.bg_img)
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
+        button_StartPage = ttk.Button(
+            self, text="Menu", command=lambda: controller.show_frame(StartPage)
+        )
+        button_StartPage.grid()
 
 
 class WinnerPage(tk.Frame):
@@ -171,15 +174,10 @@ class WinnerPage(tk.Frame):
         bg_label = tk.Label(self, image=self.bg_img)
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
 
-        # button to show frame 2 with text
-        # layout2
-        button1 = ttk.Button(
-            self, text="StartPage", command=lambda: controller.show_frame(StartPage)
+        button_StartPage = ttk.Button(
+            self, text="Menu", command=lambda: controller.show_frame(StartPage)
         )
-
-        # putting the button in its place
-        # by using grid
-        button1.grid(row=1, column=1, padx=10, pady=10)
+        button_StartPage.grid()
 
 
 # Driver Code

@@ -1,9 +1,7 @@
-##Base from https://www.geeksforgeeks.org/python/tkinter-application-to-switch-between-different-page-frames/
-
 import tkinter as tk
 from tkinter import ttk
-from tkinter import ttk
 from PIL import Image, ImageTk
+from pathlib import Path
 
 LARGEFONT = ("Verdana", 35)
 
@@ -17,12 +15,13 @@ class tkinterApp(tk.Tk):
         self.geometry("650x1155")
         self.title("Vote for your favorite dish")
         # Background
-        img = Image.open("background.jpg")
+        
+        img = Image.open('background.jpg')
         self.bg_img = ImageTk.PhotoImage(img)
 
         bg_label = tk.Label(self, image=self.bg_img)
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-
+        
         # creating a container
         container = tk.Frame(self)
         container.pack(side="top", fill="both", expand=True)
@@ -63,19 +62,41 @@ class StartPage(tk.Frame):
         bg_label = tk.Label(self, image=self.bg_img)
         bg_label.place(x=0, y=0, relwidth=1, relheight=1)
         # label of frame Layout 2
-        label = ttk.Label(self, text="Startpage", font=LARGEFONT)
+        title_label = tk.Label(self, text="Vote for your favorite food",
+                       font=("Arial", 24, ),
+                       fg="white", bg="#111827")
 
         # putting the grid in its place by using
-        # grid
-        label.grid(row=0, column=4, padx=10, pady=10)
+        title_label.place(relx=0.5, y=40, anchor="center")
 
-        button1 = ttk.Button(
-            self, text="Vote", command=lambda: controller.show_frame(Page1)
+        button_vote = ttk.Button(
+            self, text="Vote", command=lambda: controller.show_frame(VotePage)
         )
-
+        
         # putting the button in its place by
-        # using grid
-        button1.grid(row=1, column=1, padx=10, pady=10)
+        button_vote.place(relx=0.5, y=200, anchor="center")
+
+        button_result = ttk.Button(
+            self, text="Result", command=lambda: controller.show_frame(ResultPage)
+        )
+        
+        # putting the button in its place by
+        button_result.place(relx=0.5, y=450, anchor="center")
+
+        button_winner = ttk.Button(
+            self, text="Winner", command=lambda: controller.show_frame(WinnerPage)
+        )
+        
+        # putting the button in its place by
+        button_winner.place(relx=0.5, y=700, anchor="center")
+
+        button_reset = ttk.Button(
+            self, text="Reset"
+        )
+        
+        # putting the button in its place by
+        button_reset.place(relx=0.5, y=950, anchor="center")
+
 
 
 # second window frame page1

@@ -2,12 +2,6 @@ import tkinter as tk
 from tkinter import ttk
 from PIL import Image, ImageTk
 from pathlib import Path
-<<<<<<< vote-interface
-=======
-
-LARGEFONT = ("Verdana", 35)
->>>>>>> main
-
 
 class tkinterApp(tk.Tk):
     # __init__ function for class tkinterApp
@@ -15,7 +9,7 @@ class tkinterApp(tk.Tk):
 
         # __init__ function for class Tk
         tk.Tk.__init__(self, *args, **kwargs)
-        self.geometry("650x1155")
+        self.geometry("650x500")
         self.title("Vote for your favorite dish")
         # Background
         
@@ -32,22 +26,6 @@ class tkinterApp(tk.Tk):
         container.grid_rowconfigure(0, weight=1)
         container.grid_columnconfigure(0, weight=1)
 
-<<<<<<< vote-interface
-def main():
-    root = tk.Tk()
-    root.title("Vote for your favorite food")
-    root.geometry("650x1155")
-
-    BASE_DIR = Path(__file__).resolve().parent
-    IMG_PATH = BASE_DIR /"background.jpg"
-
-    img = Image.open(IMG_PATH)
-    bg_img = ImageTk.PhotoImage(img)
- 
-    bg_label = tk.Label(root, image=bg_img)
-    bg_label.place(x=0, y=0, relwidth=1, relheight=1)
-    bg_label.lower()
-=======
         # initializing frames to an empty array
         self.frames = {}
 
@@ -60,7 +38,6 @@ def main():
             # startpage, page1, page2 respectively with
             # for loop
             self.frames[F] = frame
->>>>>>> main
 
             frame.grid(row=0, column=0, sticky="nsew")
 
@@ -92,31 +69,31 @@ class StartPage(tk.Frame):
         button_vote = ttk.Button(
             self, text="Vote", command=lambda: controller.show_frame(VotePage)
         )
-        
         # putting the button in its place by
-        button_vote.place(relx=0.5, y=200, anchor="center")
+        button_vote.place(relx=0.5, y=100, anchor="center")
 
         button_result = ttk.Button(
             self, text="Result", command=lambda: controller.show_frame(ResultPage)
         )
-        
-        
         # putting the button in its place by
-        button_result.place(relx=0.5, y=450, anchor="center")
+        button_result.place(relx=0.5, y=200, anchor="center")
 
         button_winner = ttk.Button(
             self, text="Winner", command=lambda: controller.show_frame(WinnerPage)
         )
         
         # putting the button in its place by
-        button_winner.place(relx=0.5, y=700, anchor="center")
+        button_winner.place(relx=0.5, y=300, anchor="center")
 
         button_reset = ttk.Button(
-            self, text="Reset"
+            self, text="Reset", command=lambda: [
+                controller.frames[VotePage].delete(),
+                controller.frames[ResultPage].delete(),
+                controller.frames[WinnerPage].delete()
+            ]
         )
-
         # putting the button in its place by
-        button_reset.place(relx=0.5, y=950, anchor="center")
+        button_reset.place(relx=0.5, y=400, anchor="center")
 
 
 

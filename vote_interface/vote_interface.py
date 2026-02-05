@@ -72,6 +72,8 @@ class tkinterApp(tk.Tk):
     # parameter
     def show_frame(self, cont):
         frame = self.frames[cont]
+        if cont == WinnerPage:
+            frame.create_labels()
         frame.tkraise()
 
 
@@ -189,9 +191,10 @@ class WinnerPage(tk.Frame):
         button_StartPage.grid()
 
     def create_labels(self):
+        global res_votes
         if res_votes == [0, 0, 0, 0, 0, 0]:
             return
-        n = len(search_winner(res_votes))
+        n = len(search_winner())
         if n == 0:
             return
 
@@ -199,16 +202,16 @@ class WinnerPage(tk.Frame):
         font_size = 40 if n <= 3 else 30
 
         # Crée un label pour chaque mot
-        for i, word in enumerate(self.word_list):
+        for winner in search_winner():
             label = tk.Label(
                 self,
-                text=word,
+                text=winner,
                 font=("Helvetica", font_size, "bold"),
                 bg="white",
                 fg="black",
             )
             # place verticalement, centré horizontalement
-            label.pack(pady=10, anchor="center")
+            label.place(relx=0.5, y=200, anchor="center")
 
 
 # Driver Code

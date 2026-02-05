@@ -87,26 +87,34 @@ class StartPage(tk.Frame):
         )
 
         # putting the button in its place by
-        button_vote.place(relx=0.5, y=200, anchor="center")
+        button_vote.place(relx=0.5, y=100, anchor="center")
 
         button_result = ttk.Button(
             self, text="Result", command=lambda: controller.show_frame(ResultPage)
         )
 
         # putting the button in its place by
-        button_result.place(relx=0.5, y=450, anchor="center")
+        button_result.place(relx=0.5, y=200, anchor="center")
 
         button_winner = ttk.Button(
             self, text="Winner", command=lambda: controller.show_frame(WinnerPage)
         )
 
         # putting the button in its place by
-        button_winner.place(relx=0.5, y=700, anchor="center")
+        button_winner.place(relx=0.5, y=300, anchor="center")
 
-        button_reset = ttk.Button(self, text="Reset")
+        button_reset = ttk.Button(
+            self,
+            text="Reset",
+            command=lambda: [
+                controller.frames[VotePage].delete(),
+                controller.frames[ResultPage].delete(),
+                controller.frames[WinnerPage].delete(),
+            ],
+        )
 
         # putting the button in its place by
-        button_reset.place(relx=0.5, y=950, anchor="center")
+        button_reset.place(relx=0.5, y=400, anchor="center")
 
 
 # second window frame page1

@@ -9,6 +9,7 @@ res_votes = [0, 0, 0, 0, 0, 0]
 def add_vote(i):
     global res_votes
     res_votes[i] += 1
+    print(res_votes)
 
 
 class tkinterApp(tk.Tk):
@@ -137,7 +138,7 @@ class VotePage(tk.Frame):
             buttons_list[i] = ttk.Button(
                 self,
                 text=list_dishes[i],
-                command=add_vote(i),
+                command=lambda i=i: add_vote(i),
             )
             buttons_list[i].place(
                 relx=cols_relx[col], rely=rows_rely[row], anchor="center"

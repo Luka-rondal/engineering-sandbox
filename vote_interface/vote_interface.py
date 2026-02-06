@@ -28,6 +28,7 @@ def add_vote(i):
 def reset():
     global res_votes
     res_votes = [0, 0, 0, 0, 0, 0]
+
     print(res_votes)
 
 
@@ -214,6 +215,7 @@ class WinnerPage(tk.Frame):
             self, text="Menu", command=lambda: controller.show_frame(StartPage)
         )
         button_StartPage.grid()
+        self.label_list = []
 
     def create_labels(self):
         global res_votes
@@ -223,8 +225,12 @@ class WinnerPage(tk.Frame):
         if n == 0:
             return
 
-        font_size = 20
+        # Remove actual label
+        for label in self.label_list:
+            label.destroy()
+        self.label_list = []
 
+        font_size = 20
         i = 0
         # Show the list of winners
         for winner in search_winner():
@@ -237,6 +243,7 @@ class WinnerPage(tk.Frame):
             )
             label.place(relx=0.5, y=100 + 50 * i, anchor="center")
             i += 1
+            self.label_list.append(label)
 
 
 # Driver Code

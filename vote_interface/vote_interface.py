@@ -219,16 +219,15 @@ class WinnerPage(tk.Frame):
 
     def create_labels(self):
         global res_votes
+        # Remove actual label
+        for label in self.label_list:
+            label.destroy()
+        self.label_list = []
         if res_votes == [0, 0, 0, 0, 0, 0]:
             return
         n = len(search_winner())
         if n == 0:
             return
-
-        # Remove actual label
-        for label in self.label_list:
-            label.destroy()
-        self.label_list = []
 
         font_size = 20
         i = 0

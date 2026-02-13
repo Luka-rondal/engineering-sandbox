@@ -75,16 +75,16 @@ class tkinterApp(tk.Tk):
 
     # to display the current frame passed as
     # parameter
-    def show_frame(self, cont):
-        frame = self.frames[cont]
+    def show_frame(self, frame):
+        frame = self.frames[frame]
         # refresh when resultPage is load to get the number of votes
-        if cont is ResultPage:
+        if frame is ResultPage:
             for i in range(6):
                 frame.labels_list[i].config(
                     text=f"{list_dishes[i]}: {res_vote.vote_list[i]} votes"
                 )
         # refresh when winnerPage is load to get the winner(s)
-        if cont == WinnerPage:
+        if frame == WinnerPage:
             frame.create_labels()
         frame.tkraise()
 

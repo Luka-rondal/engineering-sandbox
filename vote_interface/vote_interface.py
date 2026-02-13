@@ -3,7 +3,18 @@ from tkinter import ttk
 from PIL import Image, ImageTk
 
 list_dishes = ["Pizza", "Burger", "Nuggets", "Noodles", "Salad", "Sandwich"]
-res_votes = [0, 0, 0, 0, 0, 0]
+
+
+# Class to access vote list
+class vote:
+    def __init__(self):
+        self.reset_list()
+
+    def reset_list(self):
+        self.vote_list = [0, 0, 0, 0, 0, 0]
+
+    def increment_vote_by_index(self, i):
+        self.vote_list[i] += 1
 
 
 # Search the winner in res_vote, return the alist of dish(es) with the higher score
